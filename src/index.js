@@ -2,7 +2,8 @@ import express from "express";
 import "dotenv/config"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import connectDB from "./config/mongoDB";
+import connectDB from "./config/mongoDB.js";
+import jobRoute from "./router/jobRouter.js"
 
 const app =express();
 const PORT = process.env.PORT || 3000;
@@ -14,9 +15,7 @@ app.use(cors({
 }))
 app.use(cookieParser())
 
-app.get("/test",(req,res)=>{
-    res.json({message:"Testing success"});
-})
+app.use('/api/jobs',jobRoute)
 
 const serverAndDBConnect = async()=>{
     try {

@@ -15,6 +15,11 @@ const jobSchema = new mongoose.Schema({
     minlength: [3, "minimum lenght should be 3 characters"],
     maxlength: [50, "length should not be exceed 50 characters"],
   },
+   location: {
+    type: String,
+    required: [true, "Location is required"],
+    trim: true
+  },
   jobType: {
     type: String,
     enum: ["FullTime", "PartTime", "Contract", "Internship"],
